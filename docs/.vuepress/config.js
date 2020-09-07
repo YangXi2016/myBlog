@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'Zhu Zhaohua',
+    title: 'Happy Young',
 
     serviceWorker: true,
     head: [
@@ -12,7 +12,7 @@ module.exports = {
     themeConfig: {
         logo:"/img/logo.jpeg",
         nav: [
-          { text: '首页', link: '/timeLine/' },
+          { text: '所有日志', link: '/timeLine/' },
           { text: '技术', link:'/technology/'},
           { text: '生活',link: '/life/' },
           { text: '思考',link: '/ponder/'},
