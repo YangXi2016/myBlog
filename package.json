@@ -5,8 +5,11 @@
   },
   "dependencies": {
     "vuepress": "^0.14.11",
-    "element-ui": "2.7.2",
+    "element-ui": "^2.11.1",
     "leancloud-storage": "^3.13.2",
     "valine": "^1.3.6"
+  },
+  "devDependencies": {
+    "eslint-config-vuepress": "^2.2.0"
   }
 }

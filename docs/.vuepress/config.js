@@ -17,6 +17,7 @@ module.exports = {
           { text: '生活',link: '/life/' },
           { text: '思考',link: '/ponder/'},
           { text: '标签库', link: '/tags/' },
+          { text: '喜结莲李', link: '/loveRecords/'},
           { text: '关于', link:'/about/'},
           { text: '留言板', link:'/massage/'},
           { text: '链接',
