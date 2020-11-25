@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card>
+        <el-card v-if="drawerOrCard==='card'">
             <h3>{{record.title}}</h3>
 
             <div class="image-package" v-if="record.pics && record.pics.length > 0">
@@ -14,31 +14,25 @@
             </div>
 
             <p>{{getRecordDescLines(record.desc)[0]}}</p>
-            <el-button type="text" @click="showDetail = true">>>more</el-button>
+            <el-button v-if="(getRecordDescLines(record.desc).length > 1 || (record.pics && record.pics.length > 1))" type="text" @click="$emit('drawerEvent', record)">>>more</el-button>
         </el-card>
 
-        <el-drawer
-        class="el-drawer-container"
-        :with-header="false"
-        :visible.sync="showDetail"
-        direction="rtl"
-        style="overflow:scoll"
-        size="50%">
-            <div>
-                <h2 style="text-align: center;">{{record.title}}</h2>
+        <div class="drawerDiv" v-else>
+          <h2 style="text-align: center;">{{record.title}}</h2>
 
-                <div class="image-package" v-for="(pic, index) in record.pics" >
-                    <el-image 
-                    class="image-view"
-                    fit="scale-down"
-                    lazy
-                    :src="getUrl(pic)"></el-image>
-                    <div class="image-desc">{{getUrlDesc(pic)}}</div>
-                </div>
-            
-                <p v-for="(line, index) in getRecordDescLines(record.desc)">{{line}}</p>
-            </div>
-        </el-drawer>
+          <div class="image-package" v-for="(pic, index) in record.pics" >
+              <el-image 
+              class="image-view"
+              fit="scale-down"
+              lazy
+              :src="getUrl(pic)"></el-image>
+              <div class="image-desc">{{getUrlDesc(pic)}}</div>
+          </div>
+      
+          <p v-for="(line, index) in getRecordDescLines(record.desc)">{{line}}</p>
+
+        </div>
+
     </div>
 
 </template>
@@ -53,17 +47,17 @@
 const loveRecordsPath = '/img/loveRecords/'
 export default {
     props: {
+        drawerOrCard: {
+          type: String,
+          default: 'card'
+        },
         record: {
             title: String,
             desc: String,
             pics: Array,
         }
     },
-    data() {
-        return {
-            showDetail: false,
-        }
-    },
+
     methods: {
         getUrl(pic) {
             if (typeof pic === 'object') {
@@ -82,23 +76,6 @@ export default {
             return descLines
         }
     },
-    // beforeMount () {
-    //     let record = this.record
-    //     if (record.pics == null) {record.pics = []}
-    //     for (let i = 0; i < record.pics.length; i++) {
-    //         if (typeof record.pics[i] !== 'object' || record.pics[i].url == null) {
-    //             record.pics[i] == {
-    //                 url: loveRecordsPath + record.pics[i]
-    //             }
-    //         }
-    //         console.log(record.pics[i])
-    //         if (record.pics[i].desc == null) {
-    //             record.pics[i].desc = record.pics[i].url.substring(
-    //                 record.pics[i].url.lastIndexOf('-'), 
-    //                 record.pics[i].url.lastIndexOf('.'))
-    //         }
-    //     }
-    // }
 }
 </script>
 
@@ -110,25 +87,37 @@ export default {
     text-align: center;
     /* font-size: 0; */
 }
-.image-view {
 
-    width: 100%;
-    height: 360px;
-    /* width: auto; */
-    vertical-align: middle;
-    border: 0;
+@media only screen and (max-width: 560px){
+  .image-view {
+      width: 100%;
+      width: 270px;
+      vertical-align: middle;
+      border: 0;
+  }
 }
+@media only screen and (min-width: 560px){
+  .image-view {
+      width: 100%;
+      width: 360px;
+      vertical-align: middle;
+      border: 0;
+  }
+}
+
 .image-desc {
     min-width: 20%;
     max-width: 80%;
     min-height: 43px;
-    display: inline-block;
     box-sizing: border-box;
     padding: 10px;
     margin: 0 auto;
     border-bottom: 1px solid #eee;
     font-size: 13px;
     color: #999;
+}
+.drawerDiv {
+  padding: 20px;
 }
 /*1.显示滚动条：当内容超出容器的时候，可以拖动：*/
 .el-drawer__body {
