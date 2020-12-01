@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱情纪念册</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+#myCanvas {
+  display: block;
+}
+</style>
+
+<link href="/anniversary/css/default.css" type="text/css" rel="stylesheet">
+<link rel="icon" href="/anniversary/css/heart.jpg" type="image/x-icon"/>
+<script type="text/javascript" src="/anniversary/js/jquery.js"></script>
+<script type="text/javascript" src="/anniversary/js/garden.js"></script>
+<script type="text/javascript" src="/anniversary/js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+	<div id="content">
+		<div id="myleft">
+		<canvas id="myLove"></canvas>
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">2019—05-26</span><br />
+			<span class="space"/><span class="comments">————</span><br />
+			<span class="space"/><span class="comments">2019—06-09</span><br />
+			<span class="space"/><span class="comments">**/</span><br />
+			<div style="font-size: 18px;font-family:sans-serif;letter-spacing: 8px;line-height: 30px;">
+			日料馆里初相识,<br />
+
+			K T V内共知悉。<br />
+			
+			莲花山上心交错,<br />
+			
+			匆匆那年意朦胧。<br />
+			
+			也曾不懂女人心，<br />
+			
+			迷途知返促膝谈。<br />
+			
+			情深意切共端阳，<br />
+			
+			夫妻双双把家还。<br />
+			</div>
+		</div>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					亲爱的，这是我们相爱在一起的时光。
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					爱你直到永永远远。<br/>
+					<div class="signature">- 爱你的人</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div id="copyright"> -->
+		<!-- <a href="#">....</a><br /> -->
+		<!-- <a href="#">....</a><br /> -->
+		
+	<!-- </div> -->
+</div>
+
+<script>
+	window.requestAnimFrame = (function () {
+ return  window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.oRequestAnimationFrame ||
+  window.msRequestAnimationFrame ||
+  function (callback) {
+   window.setTimeout(callback, 1000 / 60);
+  };
+})();
+
+var FX = {
+	config : {
+		<!-- background	: 'rgba(250,250,250,0.2)', -->
+		background	: 'rgb(255,255,238)',
+		color		: 'rgb(250,20,75)',
+		highlight	: 'rgb(250,20,20)'
+	},
+	dots : []
+};
+
+FX.canvas = document.getElementById('myLove');
+FX.ctx = FX.canvas.getContext('2d');
+
+Math.TO_RAD = Math.PI/180;
+
+Math.getDistance = function( x1, y1, x2, y2 ) {
+	
+	var 	xs = 0,
+		ys = 0;
+	 
+	xs = x1 - x2;
+	ys = y1 - y2;		
+	xs = xs * xs;
+	ys = ys * ys;
+	 
+	return Math.sqrt( xs + ys );
+};
+
+Math.getDegree = function( x1, y1, x2, y2 ) {
+		
+	var	dx = x2 - x1,
+		dy = y2 - y1;
+	
+	return Math.atan2(dy,dx) / Math.TO_RAD;
+};
+
+var Dot = function( opts ) {
+
+	this.color = opts.color;
+
+	this.x = 0;
+	this.y = 0;
+	this.dest_x = (opts.dest_x - 75);
+	this.dest_y = (opts.dest_y - 75);
+};
+
+Dot.prototype.update = function() {
+
+	var 	d = this,
+		dist_x = d.dest_x - d.x,
+		dist_y = d.dest_y - d.y;
+
+	d.x += dist_x * 0.05;
+	d.y += dist_y * 0.05;
+
+	FX.ctx.fillStyle = d.color;
+	FX.ctx.fillRect( d.x-2, d.y-2, 4, 4 );
+};
+
+FX.setFullscreen = function() {
+	<!-- FX.width = FX.canvas.width = window.innerWidth; -->
+	<!-- FX.height = FX.canvas.height = window.innerHeight; -->
+	FX.width = FX.canvas.width;
+	FX.height = FX.canvas.height;
+};
+
+FX.handleMouseEvent = function(e, power) {
+
+	var 	radius = 75,
+		k = FX.dots.length,
+		i=0,
+		mx, my, 
+		dist, degree,
+		d;
+
+	if(e.offsetX) {
+		mx = e.offsetX;
+		my = e.offsetY;
+	} else if(e.layerX) {
+		mx = e.layerX;
+		my = e.layerY;
+	}
+
+	mx -= FX.width/2;
+	my -= FX.height/2;
+
+	for( ;i<k;i=i+1 ) {
+
+		d = FX.dots[i];
+
+		dist = Math.getDistance( mx, my, d.x, d.y);		
+
+		if( dist < radius ) {
+
+			degree = Math.getDegree( d.x, d.y, mx, my );
+
+			d.x += (Math.cos( degree * Math.TO_RAD ) * ((radius-dist) * power));
+			d.y += (Math.sin( degree * Math.TO_RAD ) * ((radius-dist) * power));
+
+			d.color = FX.config.highlight;
+
+		} else {
+			d.color = FX.config.color;
+		}
+	}
+};
+
+FX.createHeart = function() {
+	var 	coords = [[1,4],[1,5],[1,6],[1,7],[1,8],[2,3],[2,4],[2,5],[2,6],[2,7],[2,8],[2,9],[3,2],[3,3],[3,4],[3,5],[3,6],[3,7],[3,8],[3,9],[3,10],[4,2],[4,3],[4,4],[4,5],[4,6],[4,7],[4,8],[4,9],[4,10],[4,11],[5,2],[5,3],[5,4],[5,5],[5,6],[5,7],[5,8],[5,9],[5,10],[5,11],[6,2],[6,3],[6,4],[6,5],[6,6],[6,7],[6,8],[6,9],[6,10],[6,11],[6,12],[7,3],[7,4],[7,5],[7,6],[7,7],[7,8],[7,9],[7,10],[7,11],[7,12],[8,3],[8,4],[8,5],[8,6],[8,7],[8,8],[8,9],[8,10],[8,11],[8,12],[8,13],[9,2],[9,3],[9,4],[9,5],[9,6],[9,7],[9,8],[9,9],[9,10],[9,11],[9,12],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9],[10,10],[10,11],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[12,2],[12,3],[12,4],[12,5],[12,6],[12,7],[12,8],[12,9],[12,10],[13,3],[13,4],[13,5],[13,6],[13,7],[13,8],[13,9],[14,4],[14,5],[14,6],[14,7],[14,8]],
+		k = coords.length,
+		raster = 8,
+		i = 0;
+
+	for( ;i<k;i=i+1 ) {
+		FX.dots.push( new Dot({
+			dest_x : coords[i][0] * raster,
+			dest_y : coords[i][1] * raster,
+			color: FX.config.color
+		}) );
+	}
+};
+
+FX.loop = function() {
+
+	var 	ctx = FX.ctx,
+		k = FX.dots.length,
+		i = 0;
+
+	ctx.fillStyle = FX.config.background;
+	ctx.fillRect(0,0, FX.width, FX.height );
+
+
+	ctx.save();
+	ctx.translate( FX.width/2, FX.height/2 );
+
+	for( ;i<k;i=i+1 ) {
+		FX.dots[i].update();
+	}
+
+	ctx.restore();
+	
+	requestAnimFrame( FX.loop );
+};
+window.addEventListener('resize', FX.setFullscreen );
+FX.canvas.addEventListener('mousemove', function(e) { FX.handleMouseEvent(e, -0.1); } );
+FX.canvas.addEventListener('mousedown', function(e) { FX.handleMouseEvent(e, 1); } );
+FX.setFullscreen();
+FX.createHeart();
+FX.loop();
+</script>
+
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2019,6-1,9);
+together.setHours(0);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 1000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 100);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
+
+</body>
+</html>

@@ -13,7 +13,7 @@
                 <div class="image-desc">{{getUrlDesc(record.pics[0])}}</div>
             </div>
 
-            <p>{{getRecordDescLines(record.desc)[0]}}</p>
+            <p p class="recordSec">{{getRecordDescLines(record.desc)[0]}}</p>
             <el-button v-if="(getRecordDescLines(record.desc).length > 1 || (record.pics && record.pics.length > 1))" type="text" @click="$emit('drawerEvent', record)">>>more</el-button>
         </el-card>
 
@@ -29,7 +29,7 @@
               <div class="image-desc">{{getUrlDesc(pic)}}</div>
           </div>
       
-          <p v-for="(line, index) in getRecordDescLines(record.desc)">{{line}}</p>
+          <p class="recordSec" v-for="(line, index) in getRecordDescLines(record.desc)">{{line}}</p>
 
         </div>
 
@@ -116,6 +116,11 @@ export default {
     font-size: 13px;
     color: #999;
 }
+
+.recordSec {
+  font-size: 16px;
+}
+
 .drawerDiv {
   padding: 20px;
 }

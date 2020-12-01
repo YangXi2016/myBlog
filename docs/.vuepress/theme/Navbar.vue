@@ -35,7 +35,6 @@
       <SearchBox v-else-if="$site.themeConfig.search !== false"/>
   
       <NavLinks class="can-hide"/>
-      <Mp3Player/>
     </div>
   </header>
 </template>
