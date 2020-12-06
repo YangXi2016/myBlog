@@ -96,10 +96,11 @@
 </style>
 
 <script>
+import {sortFun} from './utils/article'
 export default {
   data() {
     return {
-      pageSize : 10,
+      pageSize : 6,
       page: 1,
       data: {
         items:[],
@@ -123,7 +124,7 @@ export default {
           }
         });
 
-        return pages;
+        return pages.sort(sortFun);
       }
 
       if (this.tag) {
@@ -136,7 +137,7 @@ export default {
           }
         });
 
-        return pages;
+        return pages.sort(sortFun);
       }
 
       this.$site.pages.forEach(item => {
@@ -146,7 +147,7 @@ export default {
         }
       });
 
-      return pages;
+      return pages.sort(sortFun);
     },
   },
   methods: {

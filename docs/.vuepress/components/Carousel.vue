@@ -29,7 +29,8 @@
 </style>
 
 <script>
-const displayNum = 3;
+import {sortFun} from './utils/article'
+const displayNum = 5;
 export default {
   data() {
     return {
@@ -42,11 +43,12 @@ export default {
           this.articles.push(item);
         }
       });
-      this.articles.sort((article1, article2) => {return article2.lastUpdated - article1.lastUpdated})
+      this.articles.sort(sortFun)
       let leftNum = displayNum - this.articles.length;
       for (let key = 0; key < leftNum; key++) {
         this.articles.push({title: "暂无专题", path: undefined})
       }
+      this.articles = this.articles.slice(0,displayNum)
 
   },
   methods: {
