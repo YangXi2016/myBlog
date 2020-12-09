@@ -12,7 +12,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 在IT行业中一般由需求分析师、产品经理、交互设计师、视觉设计师、架构设计师、数据架构师、数据分析师、开发工程师、测试工程师、配置管理员、项目经理、质量经理。下面让我们来说说他们分别的职责与在项目运行过程中的职责分布。本文主要以图片来展示，不在用长篇大论在赘述。 
 
 ## 项目经理 
-![项目经理](https://upload-images.jianshu.io/upload_images/4589523-8a5f83a2a768ec74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![项目经理](/img/technology/IT角色职责及定位——项目经理.png)
+
 任职资格 
 1. 了解软件项目生命周期 
 2. 了解项目管理的9大知识领域 
@@ -25,7 +26,7 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 9. 乐于对自己的领导者进行协助和导向。 
 
 ## 产品经理 
-![image.png](https://upload-images.jianshu.io/upload_images/4589523-178a6490082af1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![产品经理](/img/technology/IT角色职责及定位——产品经理.png)
 任职资格： 
 用户和市场分析 
 1. 产品规划 
@@ -43,7 +44,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 13. 富于研究、试验精神 
 
 ## 需求分析师 
-![需求分析师](https://upload-images.jianshu.io/upload_images/4589523-aadbcecc73d737d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![需求分析师](/img/technology/IT角色职责及定位——需求分析师.png
+
 任职资格： 
 1. 会进行业务调研 
 2. 业务建模 
@@ -59,7 +61,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 12. 具有宏观把控能力和微观的细化能力 
 
 ## 交互设计师 
-![交互设计师](https://upload-images.jianshu.io/upload_images/4589523-03399f9fa2df139d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![交互设计师](/img/technology/IT角色职责及定位——交互设计师.png)
+
 任职资格： 
 1. 用户研究 
 2. 交互设计 
@@ -73,7 +76,7 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 10. 对细节不屑追求，追求完美 
 
 ## 视觉设计师 
-![视觉设计师](https://upload-images.jianshu.io/upload_images/4589523-f66805682e88686b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![视觉设计师](/img/technology/IT角色职责及定位——视觉设计师.png)
 
 任职资格 
 1. 产品形象分析 
@@ -94,7 +97,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 16. 具有宏观把控和细节的追求能力 
 
 ## 架构设计师 
-![架构设计师](https://upload-images.jianshu.io/upload_images/4589523-70db588b924427f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![架构设计师](/img/technology/IT角色职责及定位——架构设计师.png)
+
 任职资格 
 1. 了解架构设计流程 
 2. 了解架构的视图和描述方法 
@@ -108,7 +112,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 10. 富于研究、试验精神 
 
 ## 数据架构师 
-![数据构架师](https://upload-images.jianshu.io/upload_images/4589523-bd23e7aafa2a8e40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![数据构架师](/img/technology/IT角色职责及定位——数据架构师.png)
+
 任职资格 
 1. 了解数据库原理 
 2. 了解数据库架构设计流程 
@@ -125,7 +130,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 13. 具有问题分析、解决和验证能力。 
  
 ## 数据分析师 
-![数据分析师](https://upload-images.jianshu.io/upload_images/4589523-2b22af94f2fa3061.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![数据分析师](/img/technology/IT角色职责及定位——数据分析师.png)
+
 任职资格 
 1. 了解数据分析相关的算法 
 2. 熟悉数据分析工具 
@@ -137,7 +143,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 8. 具有数据敏感度，善于基于数据识别技能。 
 
 ## 开发工程师 
-![开发工程师](https://upload-images.jianshu.io/upload_images/4589523-9f5a99184a4c8efd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![开发工程师](/img/technology/IT角色职责及定位——开发工程师.png)
+
 任职资格 
 1. 了解操作系统原理 
 2. 了解所开发的软件平台运行原理 
@@ -152,7 +159,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 11. 善于并愿意使用别人的分享代码 
 
 ## 测试工程师 
- ![测试工程师](https://upload-images.jianshu.io/upload_images/4589523-d679d3dea7369b4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+ ![测试工程师](/img/technology/IT角色职责及定位——测试工程师.png)
+
 任职资格 
 1. 了解软件测试的分类 
 2. 了解测试用例设计方法 
@@ -164,7 +172,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 8. 把bug作为奖励品对待 
 
 ## 配置管理员 
-![配置管理员](https://upload-images.jianshu.io/upload_images/4589523-06a3de2c837486a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![配置管理员](/img/technology/IT角色职责及定位——配置管理员.png)
+
 任职资格 
 1. 了解软件配置管理工作流程 
 2. 了解至少一种配置管理工具原理 
@@ -177,7 +186,8 @@ note: 在IT行业中一般由需求分析师、产品经理、交互设计师、
 9. 具有较好的文档编写能力。 
 
 ## 质量经理 
- ![质量经理](https://upload-images.jianshu.io/upload_images/4589523-8af7ff70fea59cc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+ ![质量经理](/img/technology/IT角色职责及定位——质量经理.png)
+ 
 任职资格 
 1. 了解软件项目生命周期 
 2. 了解项目管理的9大知识领域 
