@@ -17,7 +17,7 @@ note: 1. 基于server端session的管理;2. cookie-based的管理方式;3. token
 指定切面
 
 **在每一个controller类里的接口方法内，对web前台页面传入的参数进行解密**
-```
+``` java
     @Before("execution(public * com.xxx.yyy.controller.*.*(..))")
     public void decrypt(JoinPoint joinPoint) throws CException {
         // 捕获方法参数列表
@@ -39,7 +39,7 @@ note: 1. 基于server端session的管理;2. cookie-based的管理方式;3. token
 
 
 **在每一个client类里的接口方法内，对即将传递给第三方模块的入参进行加密**
-```
+``` java
     @Before("execution(* com.xxx.yyy.client.*(..))")
     public void encrypt(JoinPoint joinPoint) throws CException {
         // 捕获方法参数列表
@@ -68,7 +68,7 @@ note: 1. 基于server端session的管理;2. cookie-based的管理方式;3. token
 ## 2. 策略模式处理对象中基本类型字段
 引入一个工具类：ArgHandler.Class, 其对外暴露strategyhandle方法，用于处理对象中的基本类型的字段。其具体的处理的方式，将通过后文的策略模式来注入具体的加解密方式。
 
-```
+``` java
 public class ArgHandler {
     private HandlerStrategy strategy;
 
@@ -88,7 +88,7 @@ public class ArgHandler {
 ```
 
 该类的核心方法：private void handleItem(Object item), 将扫描出基本类型字段，处理之后再回写到原始对象的字段上。如下：
-```
+``` java
     /**
      * 进行敏感字段解密/加密处理
      */
@@ -144,7 +144,7 @@ public class ArgHandler {
 
 处理方法中，handleList/handleMap/handleSet等方法需要进一步迭代处理，这里就不进一步展开。我们这里直接进入handleField(Object item, Field field)方法。即处理对象里的基本类型的字段
 
-```
+``` java
     private void handleField(Object item, Field field) throws Exception {
         strategy.handleField(item, field);
     }
@@ -153,7 +153,7 @@ public class ArgHandler {
 
 ## 3. 策略模式实现字符串的加解密
 先看一下字符串处理策略的接口定义：
-```
+``` java
 public abstract class HandlerStrategy {
     /**
      * [处理具体某个对象字段]
@@ -168,7 +168,7 @@ public abstract class HandlerStrategy {
 
 字段加解密策略类核心在于实现handleFiled这个方法。其实现基本雷同，如下：
 
-```
+``` java
 public class DecryptHandlerStrategy extends HandlerStrategy {
     @Override
     public void handleField(Object item, Field field) throws Exception {
@@ -195,7 +195,7 @@ public class DecryptHandlerStrategy extends HandlerStrategy {
 ```
 通过自定义一个字段处理的注解，来确定处理方式，是否需要加密或解密。进一步，还可以在注解里定义加密算法及秘钥配置。
 SensitiveField定义如下：
-```
+``` java
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

@@ -14,7 +14,7 @@ note: 通过http客户端三方类库，主要有三步:1. 设置proxy的地址�
 这里，给出了两种常用的http客户端三方类库——okhttp3和httpclient的代理设置
 
 ## okhttp3代理设置
-```
+``` java
 public class OkHttpUtil {
 
     private OkHttpClient client;
@@ -86,7 +86,7 @@ public class OkHttpUtil {
 注：在okhttp3代理设置中，如果通过 java.net.Authenticator.setDefault的方式来设置net全局代理，会报错代理鉴权失败。
 
 ## httphlient代理设置
-```
+``` java
 
         HttpClientBuilder custom = HttpClients.custom();
         
